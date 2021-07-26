@@ -1,13 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
-import UserForm from './UserForm';
+import Main from './Main';
 
 function App() {
   return (
     <div className="App">
-
-      <UserForm / >
-      
+      <Main/>
     </div>
   );
 }

@@ -2,23 +2,35 @@ import React, { useState } from 'react'
 
 const UserForm = () => {
 
+    
+    const groceryList = ["pearl onions", "thyme", "cremini mushrooms", "butter"];
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+
 
     const createUser = (e) => {
         e.preventDefault();
         const newUser = { firstname, lastname,email, password ,confirmpassword};
         console.log("Welcome", newUser);
-
+        setHasBeenSubmitted(true)
         setFirstname("")
         setLastname("")
         setEmail("")
         setPassword("")
         setConfirmpassword("")
     };
+    const hasbeen = ()=>{
+        if(hasBeenSubmitted){
+            return 'thank you for submitting'
+        }
+        else{
+            return 'please submit the form'
+        }
+    }
 
     const validationfirstname = (e)  =>{
         
@@ -49,9 +61,11 @@ const UserForm = () => {
 
 
     return (
+        <>
         <div>
 
             <form onSubmit={createUser}>
+                {hasbeen()}
                 <div>
                     <label>FirstName: </label>
                     <input type="text" onChange=  { (e) => setFirstname(e.target.value)} />
@@ -91,6 +105,13 @@ const UserForm = () => {
                 {confirmpassword}<br></br>
 
         </div>
+
+        <ul>{
+            groceryList.map( (x, i) => 
+                <li key={ i }>{ x }</li>
+            )
+        }</ul>
+        </>
     )
 }
 

@@ -1,7 +1,8 @@
 import React , {useState , useEffect} from 'react';
 import axios from 'axios';
+import { Link } from '@reach/router';
 
-const Formcomponent = () => {
+const Formcomponent = (props) => {
         const [title , setTitle] = useState("");
         const [price , setPrice]  =  useState("");
         const [description , setDescription]  =  useState("");
@@ -25,6 +26,7 @@ const Formcomponent = () => {
 
 
     return (
+        <>
         <div>
             <h1> Product Manager </h1>
 
@@ -50,6 +52,13 @@ const Formcomponent = () => {
             </form>
 
         </div>
+
+           <div>
+           {props.product.map((Product, index)=>{
+               return <p key={index}> Title :<Link to={"/products/" + Product._id}>{Product.title}  </Link> </p>
+           })}
+       </div>
+       </>
     )
 }
 

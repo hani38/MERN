@@ -38,7 +38,7 @@ const Formcomponent = (props) => {
 
                 <div>
                     <label>Price: </label>
-                    <input type="text" onChange={(e) => setPrice(e.target.value)} />
+                    <input type="number" onChange={(e) => setPrice(e.target.value)} />
                 </div>
                 
                 <div>
@@ -56,6 +56,8 @@ const Formcomponent = (props) => {
            <div>
            {props.product.map((Product, index)=>{
                return <p key={index}> Title :<Link to={"/products/" + Product._id}>{Product.title}  </Link> </p>
+
+               
            })}
        </div>
        </>
